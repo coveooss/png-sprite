@@ -4,4 +4,5 @@ gulp.task('default', function() {
   gulp
     .src('test/img/**/*.png')
     .pipe(gulpSprite())
+    .pipe(gulp.dest('target/'))
 });

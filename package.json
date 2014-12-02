@@ -23,12 +23,11 @@
     "url": "https://github.com/apare/png-sprite/issues"
   },
   "dependencies": {
-    "node-pngjs": "0.0.3",
-    "ejs": "~1.0.0"
-  },
-  "devDependencies": {
-    "through": "~2.3.6",
+    "ejs": "~1.0.0",
+    "gulp": "^3.8.10",
     "gulp-util": "~3.0.1",
+    "node-pngjs": "0.0.3",
+    "through": "~2.3.6",
     "through2": "~0.6.3"
   }
 }

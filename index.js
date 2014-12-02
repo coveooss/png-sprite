@@ -56,7 +56,9 @@ Sprite.prototype.addFile = function (file, cb) {
       this.path = file.path;
       this.base = file.base;
       self.images.push(this);
-      cb();
+      if(cb != null) {
+        cb();
+      }
     });
 };
 Sprite.prototype.addFiles = function (files, cb) {

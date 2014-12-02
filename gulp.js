@@ -1,5 +1,6 @@
 var gutil = require('gulp-util');
 var through = require('through2');
+var Buffer = require('buffer').Buffer;
 
 var Sprite = require("./index.js").Sprite;
 
@@ -7,7 +8,7 @@ var path = require('path');
 var PluginError = gutil.PluginError;
 
 
-module.exports = function(opt) {
+module.exports = function (opt) {
   opt = opt || {};
   opt.cssPath = opt.cssPath || './sprite.css';
   opt.pngPath = opt.pngPath || './sprite.png';
@@ -19,34 +20,38 @@ module.exports = function(opt) {
       return; // ignore
     }
 
-    if (file.isStream()) {
-      return this.emit('error', new PluginError('gulp-sprite',  'Streaming not supported'));
-    }
-
-    if(opt.base == null){
+    if (opt.base == null) {
       opt.base = file.base;
     }
 
     sprite.addFile(file, done);
   }
 
-  function endStream (done) {
+  function endStream(done) {
     var self = this;
     var obj = sprite.compile();
-    var cssFile = new gutil.File({
+    self.push(new gutil.File({
       cwd: "/",
       base: opt.base,
       path: path.resolve(opt.base, opt.cssPath),
-      contents: obj.css
+      contents: new Buffer(obj.css)
+    }));
+
+    // through don't like the png stream
+    // just concat the buffer ftw
+    var buffers = [];
+    obj.png.on('data', function(chunk){
+      buffers.push(chunk);
     });
-    var cssFile = new gutil.File({
-      cwd: "/",
-      base: opt.base,
-      path: path.resolve(opt.base, opt.pngPath),
-      contents: obj.png
-    });
-    this.push(cssFile);
-    done();
+    obj.png.on('end', function(chunk){
+      self.push(new gutil.File({
+        cwd: "/",
+        base: opt.base,
+        path: path.resolve(opt.base, opt.pngPath),
+        contents: Buffer.concat(buffers)
+      }));
+      done();
+    })
   }
 
   return through.obj(bufferImages, endStream);
