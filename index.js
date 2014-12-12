@@ -133,7 +133,7 @@ Sprite.prototype.compile = function (relativePngPath) {
 exports.Sprite = Sprite;
 
 exports.gulp = function (opt) {
-  require('./gulp')(opt)
+  return require('./gulp')(opt)
 };
 
 function Node(x, y, width, height) {
