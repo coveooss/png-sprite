@@ -7,7 +7,7 @@ function Sprite(opt) {
   this.opt = opt || {};
   if (this.opt.cssTemplate == null) {
     this.opt.cssTemplate = '<%= nodes.map(function(node){ return "."+node.className }).join(",\\n") %>{\
-  background-image:url(<%= JSON.stringify(relativePngPath) %>);\
+  background-image:url(<%- JSON.stringify(relativePngPath.split(path.sep)) %>);\
   display:inline-block;\
   background-repeat:no-repeat;\
   overflow:hidden;\
