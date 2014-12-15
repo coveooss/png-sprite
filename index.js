@@ -15,7 +15,7 @@ function Sprite(opt) {
 }\
 <% nodes.forEach(function(node){ %>\
 <%= "."+node.className %>{\
-  background-position:<%= node.x / ratio %>px <%= node.y / ratio %>px;\
+  background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
   width:<%= node.width / ratio %>px;\
   height:<%= node.height / ratio %>px;\
   text-indent:<%= node.width / ratio %>px;\
@@ -81,7 +81,7 @@ Sprite.prototype.compile = function (relativePngPath) {
 
   var root = new Node();
   var sortedImage = this.images.sort(function (a, b) {
-    return b.width * b.height - a.width * a.height;
+    return b.height - a.height;
   });
   sortedImage.forEach(function (image) {
     root.insert(image);
@@ -95,7 +95,8 @@ Sprite.prototype.compile = function (relativePngPath) {
 
   var png = new PNG({
     width: width,
-    height: height
+    height: height,
+    deflateStrategy:1
   });
 
   // clean png
