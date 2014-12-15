@@ -22,7 +22,7 @@ function Sprite(opt) {
 }\
 <%})%>';
     this.opt.className = '<%= namespace != null ? namespace + "-" : "" %>' +
-    '<%= path.normalize(node.image.base != null ? path.resolve(node.image.base, node.image.path) : node.image.path).replace(/\\.png$/,"").replace(/\\W+/g,"-") %>';
+    '<%= path.normalize(node.image.base != null ? path.relative(node.image.base, node.image.path) : node.image.path).replace(/\\.png$/,"").replace(/\\W+/g,"-") %>';
   }
   if (this.opt.ratio == null) {
     this.opt.ratio = 1;
