@@ -6,21 +6,27 @@ var PNG = require('node-pngjs').PNG,
 function Sprite(opt) {
   this.opt = opt || {};
   if (this.opt.cssTemplate == null) {
-    this.opt.cssTemplate = '<%= nodes.map(function(node){ return "."+node.className }).join(",\\n") %>{\
-  background-image:url(<%- JSON.stringify(relativePngPath) %>);\
-  display:inline-block;\
-  background-repeat:no-repeat;\
-  overflow:hidden;\
-  background-size: <%= width / ratio %>px <%= height / ratio %>px;\
-}\
-<% nodes.forEach(function(node){ %>\
-<%= "."+node.className %>{\
-  background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
-  width:<%= node.width / ratio %>px;\
-  height:<%= node.height / ratio %>px;\
-  text-indent:<%= node.width / ratio %>px;\
-}\
-<%})%>';
+    this.opt.globalTemplate = this.opt.globalTemplate || '{\
+      background-image:url(<%- JSON.stringify(relativePngPath) %>);\
+      display:inline-block;\
+      background-repeat:no-repeat;\
+      overflow:hidden;\
+      background-size: <%= width / ratio %>px <%= height / ratio %>px;\
+    }';
+
+    this.opt.eachTemplate = this.opt.eachTemplate || '<%= "."+node.className %>{\
+      background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
+      width:<%= node.width / ratio %>px;\
+      height:<%= node.height / ratio %>px;\
+      text-indent:<%= node.width / ratio %>px;\
+    }';
+
+    this.opt.cssTemplate = '<%= nodes.map(function(node){ return "."+node.className }).join(",\\n") %>'
+    + this.opt.globalTemplate +
+    '<% nodes.forEach(function(node){ %>'
+    + this.opt.eachTemplate +
+    '<%})%>';
+
     this.opt.className = '<%= namespace != null ? namespace + "-" : "" %>' +
     '<%= path.normalize(node.image.base != null ? path.relative(node.image.base, node.image.path) : node.image.path).replace(/\\.png$/,"").replace(/\\W+/g,"-") %>';
   }
