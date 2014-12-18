@@ -28,8 +28,9 @@ module.exports = function (opt) {
   }
 
   function endStream(done) {
+    var relativePath = opt.relPath || path.relative(path.dirname(opt.cssPath, opt.pngPath));
+    var obj = sprite.compile(relativePath);
     var self = this;
-    var obj = sprite.compile(path.relative(path.dirname(opt.cssPath), opt.pngPath));
     self.push(new gutil.File({
       cwd: "/",
       base: opt.base,
