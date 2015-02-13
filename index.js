@@ -124,7 +124,7 @@ Sprite.prototype.compile = function (relativePngPath) {
   cssString = ejs.render(this.opt.cssTemplate, {
     path: path,
     nodes: nodes,
-    relativePngPath: relativePngPath,
+    relativePngPath: relativePngPath.replace(/\\/g, '/'),
     ratio: this.opt.ratio,
     namespace: this.opt.namespace,
     width: width,
