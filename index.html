@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Png-sprite by Coveo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Png-sprite</h1>
+      <h2 class="project-tagline">gulp task for converting sprites images to single file with css</h2>
+      <a href="https://github.com/Coveo/png-sprite" class="btn">View on GitHub</a>
+      <a href="https://github.com/Coveo/png-sprite/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Coveo/png-sprite/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="png-sprite" class="anchor" href="#png-sprite" aria-hidden="true"><span class="octicon octicon-link"></span></a>png-sprite</h1>
+
+<p><a href="https://www.npmjs.com/package/png-sprite"><img src="https://img.shields.io/npm/v/png-sprite.svg?style=flat-square" alt="npm"></a>
+<a href="https://david-dm.org/Coveo/png-sprite"><img src="https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square" alt="dependencies"></a>
+<a href="https://codeclimate.com/github/Coveo/png-sprite"><img src="https://img.shields.io/codeclimate/github/Coveo/png-sprite.svg?style=flat-square" alt="Code Climate"></a>
+<a href="https://github.com/Coveo/png-sprite/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="license"></a></p>
+
+<p>png-sprite is a gulp module that converts blablabla....</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> pngSprite <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>png-sprite<span class="pl-pds">'</span></span>);
+
+gulp.task(<span class="pl-s"><span class="pl-pds">'</span>buildSprites<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">done</span>) {
+  <span class="pl-k">return</span> gulp.<span class="pl-c1">src</span>(<span class="pl-s"><span class="pl-pds">'</span>img/**/*.png<span class="pl-pds">'</span></span>)
+      .pipe(pngSprite.gulp({
+        cssPath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>sprites.scss<span class="pl-pds">'</span></span>,
+        pngPath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>sprites.png<span class="pl-pds">'</span></span>,
+        namespace<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>sprites<span class="pl-pds">'</span></span>
+      }))
+      .pipe(gulp.dest(<span class="pl-s"><span class="pl-pds">'</span>./target/<span class="pl-pds">'</span></span>))
+});</pre></div>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> fs <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> pngSprite <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>png-sprite<span class="pl-pds">'</span></span>);.Sprite;
+<span class="pl-k">var</span> Sprite <span class="pl-k">=</span> pngSprite;
+<span class="pl-k">var</span> sprite <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Sprite</span>();
+sprite.addImageSrc([
+  <span class="pl-s"><span class="pl-pds">"</span>./img/a.png<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>./img/b.png<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>./img/c.png<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>./img/d.png<span class="pl-pds">"</span></span>
+], <span class="pl-k">function</span>(){
+  <span class="pl-k">var</span> obj <span class="pl-k">=</span> sprite.<span class="pl-c1">compile</span>(<span class="pl-s"><span class="pl-pds">'</span>./sprite.png<span class="pl-pds">'</span></span>);
+  obj.png.pipe(fs.createWriteStream(<span class="pl-s"><span class="pl-pds">'</span>sprite.png<span class="pl-pds">'</span></span>));
+  fs.writeFile(<span class="pl-s"><span class="pl-pds">'</span>sprite.css<span class="pl-pds">'</span></span>, obj.css);
+});</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Coveo/png-sprite">Png-sprite</a> is maintained by <a href="https://github.com/Coveo">Coveo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
