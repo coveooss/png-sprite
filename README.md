@@ -1,8 +1,7 @@
 png-sprite
 ==========
-[![dependencies](https://img.shields.io/david/Coveo/coveo.analytics.js.svg?style=flat-square)](https://github.com/Coveo/coveo.analytics.js/blob/master/package.json)
-[![dev-dependencies](https://img.shields.io/david/dev/Coveo/coveo.analytics.js.svg?style=flat-square)](https://github.com/Coveo/coveo.analytics.js/blob/master/package.json)
-[![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/coveo.analytics.js/blob/master/LICENSE)
+[![dependencies](https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/package.json)
+[![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/LICENSE)
 
 png-sprite is a gulp module that converts blablabla....
 
