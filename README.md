@@ -1,6 +1,6 @@
 png-sprite
 ==========
-[![npm](https://img.shields.io/npm/v/png-sprite.svg?style=flat-square](https://www.npmjs.com/package/png-sprite)
+[![npm](https://img.shields.io/npm/v/png-sprite.svg?style=flat-square)](https://www.npmjs.com/package/png-sprite)
 [![dependencies](https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square)](https://david-dm.org/Coveo/png-sprite)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/LICENSE)
 
