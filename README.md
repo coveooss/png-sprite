@@ -1,6 +1,6 @@
 png-sprite
 ==========
-[![dependencies](https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/package.json)
+[![dependencies](https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square)](https://david-dm.org/Coveo/png-sprite)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/LICENSE)
 
 png-sprite is a gulp module that converts blablabla....
