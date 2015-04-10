@@ -1,7 +1,7 @@
 var PNG = require('node-pngjs').PNG,
-  path = require('path'),
-  ejs = require('ejs'),
-  fs = require('fs');
+    path = require('path'),
+    ejs = require('ejs'),
+    fs = require('fs');
 
 function Sprite(opt) {
   this.opt = opt || {};
@@ -44,28 +44,28 @@ Sprite.prototype.addImageSrc = function (images, cb) {
   var wait = images.length;
   images.forEach(function (imagePath) {
     fs.createReadStream(imagePath)
-      .pipe(new PNG())
-      .on('parsed', function () {
-        this.path = imagePath;
-        self.images.push(this);
-        if (--wait == 0 && cb != null) {
-          cb();
-        }
-      });
+        .pipe(new PNG())
+        .on('parsed', function () {
+          this.path = imagePath;
+          self.images.push(this);
+          if (--wait == 0 && cb != null) {
+            cb();
+          }
+        });
   });
 };
 Sprite.prototype.addFile = function (file, cb) {
   var self = this;
   file
-    .pipe(new PNG())
-    .on('parsed', function () {
-      this.path = file.path;
-      this.base = file.base;
-      self.images.push(this);
-      if(cb != null) {
-        cb();
-      }
-    });
+      .pipe(new PNG())
+      .on('parsed', function () {
+        this.path = file.path;
+        this.base = file.base;
+        self.images.push(this);
+        if (cb != null) {
+          cb();
+        }
+      });
 };
 Sprite.prototype.addFiles = function (files, cb) {
   var self = this;
@@ -102,7 +102,7 @@ Sprite.prototype.compile = function (relativePngPath) {
   var png = new PNG({
     width: width,
     height: height,
-    deflateStrategy:1
+    deflateStrategy: 1
   });
 
   // clean png
@@ -176,29 +176,29 @@ Node.prototype.insert = function (image) {
   var dh = this.height - image.height;
   if (dw > dh) {
     this.left = new Node(
-      this.x,
-      this.y,
-      image.width,
-      this.height
+        this.x,
+        this.y,
+        image.width,
+        this.height
     );
     this.right = new Node(
-      this.x + image.width,
-      this.y,
-      this.width - image.width,
-      this.height
+        this.x + image.width,
+        this.y,
+        this.width - image.width,
+        this.height
     );
   } else {
     this.left = new Node(
-      this.x,
-      this.y,
-      this.width,
-      image.height
+        this.x,
+        this.y,
+        this.width,
+        image.height
     );
     this.right = new Node(
-      this.x,
-      this.y + image.height,
-      this.width,
-      this.height - image.height
+        this.x,
+        this.y + image.height,
+        this.width,
+        this.height - image.height
     );
   }
   // insert into first child we created
