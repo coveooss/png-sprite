@@ -72,7 +72,7 @@ Sprite.prototype.addFile = function (file, cb) {
         this.path = file.path;
         this.base = file.base;
         self.images.push(this);
-        if (cb != null) {
+        if (cb !== undefined) {
           cb();
         }
       });
@@ -175,9 +175,13 @@ Node.prototype.insert = function (image) {
     return this.right.insert(image);
   }
   // if there's already a image here
-  if (this.image !== null) return null;
+  if (this.image !== null){
+    return null;
+  }
   // if we're too small
-  if (this.width < image.width || this.height < image.height) return null;
+  if (this.width < image.width || this.height < image.height){
+    return null;
+  }
   // if we're just right
   if (this.width === image.width && this.height === image.height) {
     this.image = image;

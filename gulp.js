@@ -51,7 +51,7 @@ module.exports = function (opt) {
         contents: Buffer.concat(buffers)
       }));
       done();
-    })
+    });
   }
 
   return through.obj(bufferImages, endStream);
