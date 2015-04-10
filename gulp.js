@@ -5,7 +5,6 @@ var Buffer = require('buffer').Buffer;
 var Sprite = require("./index.js").Sprite;
 
 var path = require('path');
-var PluginError = gutil.PluginError;
 
 
 module.exports = function (opt) {
@@ -20,7 +19,7 @@ module.exports = function (opt) {
       return; // ignore
     }
 
-    if (opt.base == null) {
+    if (opt.base === undefined) {
       opt.base = file.base;
     }
 
@@ -44,7 +43,7 @@ module.exports = function (opt) {
     obj.png.on('data', function(chunk){
       buffers.push(chunk);
     });
-    obj.png.on('end', function(chunk){
+    obj.png.on('end', function(){
       self.push(new gutil.File({
         cwd: "/",
         base: opt.base,
