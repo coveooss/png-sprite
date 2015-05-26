@@ -23,8 +23,7 @@ gulp.task('buildSprites', function (done) {
 ```
 ```js
 var fs = require('fs');
-var pngSprite = require('png-sprite');.Sprite;
-var Sprite = pngSprite;
+var Sprite = require('png-sprite').Sprite;
 var sprite = new Sprite();
 sprite.addImageSrc([
   "./img/a.png",
