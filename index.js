@@ -95,7 +95,8 @@ Sprite.prototype.compile = function (relativePngPath) {
       height = 0,
       root = new Node(),
       sortedImage = this.images.sort(function (a, b) {
-        return b.height - a.height;
+        var height = b.height - a.height;
+        return height === 0 ? (b.path < a.path ? -1 : 1) : height;
       });
 
   sortedImage.forEach(function (image) {
