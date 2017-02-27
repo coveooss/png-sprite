@@ -168,8 +168,8 @@ function Node(x, y, width, height) {
 }
 
 Node.prototype.insert = function (image) {
-  let width = image.width + spriteOffset
-  let height = image.height + spriteOffset
+  var width = image.width + spriteOffset
+  var height = image.height + spriteOffset
   //  if we're not a leaf
   if (this.image === null && this.left !== null && this.right !== null) {
     // try inserting into first child
