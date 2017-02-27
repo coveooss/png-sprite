@@ -3,6 +3,8 @@ var PNG = require('node-pngjs').PNG,
     ejs = require('ejs'),
     fs = require('fs');
 
+var spriteOffset = 2;
+
 function Sprite(opt) {
   this.opt = opt !== undefined ? opt : {};
 
@@ -106,6 +108,8 @@ Sprite.prototype.compile = function (relativePngPath) {
   var nodes = root.getNodeWithImages();
 
   nodes.forEach(function (node) {
+    node.width -= spriteOffset;
+    node.height -= spriteOffset;
     width = Math.max(width, node.width + node.x);
     height = Math.max(height, node.height + node.y);
   });
@@ -128,7 +132,6 @@ Sprite.prototype.compile = function (relativePngPath) {
       node: node,
       namespace: self.opt.namespace
     });
-    //
     node.image.bitblt(png, 0, 0, node.width, node.height, node.x, node.y);
   });
 
@@ -165,6 +168,8 @@ function Node(x, y, width, height) {
 }
 
 Node.prototype.insert = function (image) {
+  let width = image.width + spriteOffset
+  let height = image.height + spriteOffset
   //  if we're not a leaf
   if (this.image === null && this.left !== null && this.right !== null) {
     // try inserting into first child
@@ -180,29 +185,29 @@ Node.prototype.insert = function (image) {
     return null;
   }
   // if we're too small
-  if (this.width < image.width || this.height < image.height){
+  if (this.width < width || this.height < height){
     return null;
   }
   // if we're just right
-  if (this.width === image.width && this.height === image.height) {
+  if (this.width === width && this.height === height) {
     this.image = image;
     return this;
   }
 
   // gotta split this node and create some kids
-  var dw = this.width - image.width;
-  var dh = this.height - image.height;
+  var dw = this.width - width;
+  var dh = this.height - height;
   if (dw > dh) {
     this.left = new Node(
         this.x,
         this.y,
-        image.width,
+        width,
         this.height
     );
     this.right = new Node(
-        this.x + image.width,
+        this.x + width,
         this.y,
-        this.width - image.width,
+        this.width - width,
         this.height
     );
   } else {
@@ -210,13 +215,13 @@ Node.prototype.insert = function (image) {
         this.x,
         this.y,
         this.width,
-        image.height
+        height
     );
     this.right = new Node(
         this.x,
-        this.y + image.height,
+        this.y + height,
         this.width,
-        this.height - image.height
+        this.height - height
     );
   }
   // insert into first child we created
