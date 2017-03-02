@@ -1,15 +1,15 @@
-png-sprite
+coveo-png-sprite
 ==========
-[![npm](https://img.shields.io/npm/v/png-sprite.svg?style=flat-square)](https://www.npmjs.com/package/png-sprite)
+[![npm](https://img.shields.io/npm/v/coveo-png-sprite.svg?style=flat-square)](https://www.npmjs.com/package/coveo-png-sprite)
 [![dependencies](https://img.shields.io/david/Coveo/png-sprite.svg?style=flat-square)](https://david-dm.org/Coveo/png-sprite)
 [![Code Climate](https://img.shields.io/codeclimate/github/Coveo/png-sprite.svg?style=flat-square)](https://codeclimate.com/github/Coveo/png-sprite)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/png-sprite/blob/master/LICENSE)
 
-png-sprite is a gulp module that creates sprite sheets from multiple images
+coveo-png-sprite is a gulp module that creates sprite sheets from multiple images
 
 ```js
 var gulp = require('gulp');
-var pngSprite = require('png-sprite');
+var pngSprite = require('coveo-png-sprite');
 
 gulp.task('buildSprites', function (done) {
   return gulp.src('img/**/*.png')
@@ -23,7 +23,7 @@ gulp.task('buildSprites', function (done) {
 ```
 ```js
 var fs = require('fs');
-var Sprite = require('png-sprite').Sprite;
+var Sprite = require('coveo-png-sprite').Sprite;
 var sprite = new Sprite();
 sprite.addImageSrc([
   "./img/a.png",

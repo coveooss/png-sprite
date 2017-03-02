@@ -1,33 +1,35 @@
 {
-  "name": "png-sprite",
-  "version": "0.1.2",
-  "description": "png-sprite",
+  "name": "coveo-png-sprite",
+  "version": "1.0.0",
+  "description": "Gulp task that converts images to sprites+css",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node ./test/test.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Coveo/png-sprite.git"
   },
   "keywords": [
+    "coveo",
+    "gulp",
     "png",
     "sprite",
     "css",
     "less",
     "sass"
   ],
-  "author": "Apare <alex.pare.inc@gmail.com>",
+  "author": "Coveo Solutions Inc.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Coveo/png-sprite/issues"
   },
   "dependencies": {
-    "ejs": "~2.5.6",
+    "ejs": "^2.5.6",
     "gulp": "^3.8.10",
-    "gulp-util": "~3.0.1",
+    "gulp-util": "^3.0.1",
     "node-pngjs": "0.0.3",
-    "through": "~2.3.6",
-    "through2": "~2.0.3"
+    "through": "^2.3.6",
+    "through2": "^2.0.3"
   }
 }
