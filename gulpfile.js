@@ -1,7 +1,8 @@
-var gulp = require('gulp');
-var gulpSprite = require('./gulp');
-gulp.task('default', function() {
-  gulp
+const gulp = require('gulp');
+const gulpSprite = require('./index').gulp;
+
+gulp.task('default', () => {
+  return gulp
     .src('test/img/**/*.png')
     .pipe(gulpSprite())
     .pipe(gulp.dest('target/'));
