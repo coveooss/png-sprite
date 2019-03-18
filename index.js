@@ -1,9 +1,9 @@
-var PNG = require('node-pngjs').PNG,
-    path = require('path'),
-    ejs = require('ejs'),
-    fs = require('fs');
+const PNG = require('pngjs').PNG;
+const path = require('path');
+const ejs = require('ejs');
+const fs = require('fs');
 
-var spriteOffset = 2;
+const spriteOffset = 2;
 
 function Sprite(opt) {
   this.opt = opt !== undefined ? opt : {};
@@ -125,12 +125,12 @@ Sprite.prototype.compile = function (relativePngPath) {
     png.data[i] = 0x00;
   }
 
-  nodes.forEach(function (node) {
+  nodes.forEach((node) => {
     // Format Name
-    node.className = ejs.render(self.opt.className, {
+    node.className = ejs.render(this.opt.className, {
       path: path,
       node: node,
-      namespace: self.opt.namespace
+      namespace: this.opt.namespace
     });
     node.image.bitblt(png, 0, 0, node.width, node.height, node.x, node.y);
   });
