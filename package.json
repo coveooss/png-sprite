@@ -25,7 +25,7 @@
     "url": "https://github.com/Coveo/png-sprite/issues"
   },
   "dependencies": {
-    "ejs": "2.6.1",
+    "ejs": "3.1.6",
     "gulp": "4.0.0",
     "pngjs": "3.4.0",
     "through2": "3.0.1",
